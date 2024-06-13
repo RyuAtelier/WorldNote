@@ -1,0 +1,12 @@
+.create-note {
+    position: fixed;
+    bottom: 20px !important;
+    right: 20px !important;
+    padding: 10px 20px !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.add-note-mode {
+    cursor: cell !important;
+}

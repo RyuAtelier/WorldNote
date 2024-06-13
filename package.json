@@ -1,0 +1,43 @@
+{
+  "name": "vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear --port 5555"
+  },
+  "devDependencies": {
+    "@beyonk/svelte-mapbox": "^9.1.1",
+    "@iconify/svelte": "^3.1.6",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/file-saver": "^2.0.7",
+    "@zerodevx/svelte-toast": "^0.9.5",
+    "rollup": "^4.13.0",
+    "rollup-plugin-css-only": "^4.5.2",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-svelte": "^7.2.0",
+    "svelte": "^4.2.12",
+    "svelte-copy": "^1.4.1"
+  },
+  "dependencies": {
+    "@maptiler/sdk": "^2.0.3",
+    "d3": "^7.9.0",
+    "dotenv": "^16.4.5",
+    "file-saver": "^2.0.5",
+    "fs": "^0.0.1-security",
+    "iconify-icon": "^2.0.0",
+    "jszip": "^3.10.1",
+    "mapbox-gl": "^3.4.0",
+    "rollup-plugin-dotenv": "^0.5.1",
+    "sirv-cli": "^2.0.2",
+    "svelte-agnostic-draggable": "^0.2.0",
+    "svelte-sortable-items": "^0.0.5",
+    "video-editor-timeline": "^2.4.5",
+    "yesvelte": "^0.0.2-next.217"
+  }
+}
