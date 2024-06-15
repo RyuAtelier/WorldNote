@@ -1,0 +1,2 @@
+- In MapActions component, where a temporary note is created, we pass pure HTML to popup content when it should be possible to pass a Svelte component directly.
+- Stacking notes, people might want to add notes on the same place.

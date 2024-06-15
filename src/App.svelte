@@ -4,8 +4,9 @@
     import { El } from 'yesvelte';
 
     import Navbar from "./components/Navbar.svelte";
-    import Map from './components/Map.svelte';
-    import MapActions from "./components/MapActions.svelte";
+    import Map from './components/Map/Map.svelte';
+    import MapActions from "./components/Map/MapActions.svelte";
+    import Footer from "./components/Footer.svelte";
 </script>
 
 <svelte:head>
@@ -20,6 +21,9 @@
         <El row>
             <Map/>
             <MapActions/>
+        </El>
+        <El row>
+            <Footer/>
         </El>
     </El>
 </main>

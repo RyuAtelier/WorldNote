@@ -25,9 +25,11 @@
     "svelte-copy": "^1.4.1"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.2",
     "@maptiler/sdk": "^2.0.3",
     "d3": "^7.9.0",
     "dotenv": "^16.4.5",
+    "events": "^3.3.0",
     "file-saver": "^2.0.5",
     "fs": "^0.0.1-security",
     "iconify-icon": "^2.0.0",
