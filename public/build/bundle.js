@@ -20816,10 +20816,10 @@
 				div1 = element("div");
 				div0 = element("div");
 				attr_dev(div0, "class", "map svelte-3n4d3d");
-				add_location(div0, file$3, 200, 4, 6491);
+				add_location(div0, file$3, 197, 4, 6254);
 				attr_dev(div1, "class", "map-wrap");
-				add_location(div1, file$3, 199, 2, 6464);
-				add_location(div2, file$3, 198, 0, 6456);
+				add_location(div1, file$3, 196, 2, 6227);
+				add_location(div2, file$3, 195, 0, 6219);
 			},
 			l: function claim(nodes) {
 				throw new Error_1$2("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -20995,24 +20995,20 @@
 						const noteHtml = Note(note);
 
 						// Create a popup for the marker
-						const notePopup = new mapboxGlExports.Popup().setHTML(noteHtml);
+						const notePopup = new mapboxGlExports.Popup({ closeButton: false, closeOnClick: false }).setHTML(noteHtml);
 
 						// Create a marker for the note
-						const noteMarker = new mapboxGlExports.Marker({ closeButton: false, closeOnClick: false }).setLngLat(lngLat).setPopup(notePopup).addTo($map);
+						const noteMarker = new mapboxGlExports.Marker().setLngLat(lngLat).setPopup(notePopup).addTo($map);
 
 						// When the marker is hovered, the popup should be shown and the cancel button should be hidden.
 						const markerDiv = noteMarker.getElement();
 
-						const popupCloseButton = document.querySelector('.mapboxgl-popup-close-button');
-
 						markerDiv.addEventListener('mouseenter', () => {
 							noteMarker.togglePopup();
-							popupCloseButton.style.visibility = 'hidden';
 						});
 
 						markerDiv.addEventListener('mouseleave', () => {
 							noteMarker.togglePopup();
-							popupCloseButton.style.visibility = 'visible';
 						});
 					});
 				}

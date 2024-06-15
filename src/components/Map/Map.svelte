@@ -124,29 +124,26 @@
                 const noteHtml = Note(note);
                 
                 // Create a popup for the marker
-                const notePopup = new Popup()
-                  .setHTML(noteHtml);
-
-                // Create a marker for the note
-                const noteMarker = new Marker({
+                const notePopup = new Popup({
                     closeButton: false,
                     closeOnClick: false
                 })
+                  .setHTML(noteHtml);
+
+                // Create a marker for the note
+                const noteMarker = new Marker()
                   .setLngLat(lngLat)
                   .setPopup(notePopup)
-                  .addTo($map);
+                  .addTo($map)
 
                   // When the marker is hovered, the popup should be shown and the cancel button should be hidden.
                   const markerDiv = noteMarker.getElement();
-                  const popupCloseButton = document.querySelector('.mapboxgl-popup-close-button');
 
                   markerDiv.addEventListener('mouseenter', () => {
                       noteMarker.togglePopup();
-                      popupCloseButton.style.visibility = 'hidden';
                   });
                   markerDiv.addEventListener('mouseleave', () => {
                       noteMarker.togglePopup();
-                      popupCloseButton.style.visibility = 'visible';
                   });
             });
         }
