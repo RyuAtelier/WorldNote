@@ -1,0 +1,11 @@
+:root {
+    --toastContainerTop: 4.5rem;       /* Set the top position to 1rem */
+    --toastContainerRight: auto;     /* Remove any right positioning */
+    --toastContainerBottom: auto;    /* Remove any bottom positioning */
+    --toastContainerLeft: 1rem;      /* Set the left position to 1rem */
+}
+
+html, body {
+    overflow-x: hidden !important; /* Disable horizontal scrolling */
+    overflow-y: hidden !important; /* Disable vertical scrolling */
+}

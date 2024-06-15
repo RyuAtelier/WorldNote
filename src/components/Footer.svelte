@@ -40,7 +40,7 @@
         text-align: center;
         color: white; /* Text color */
         padding: 10px 0; /* Adjust padding as needed */
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Text shadow */
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 1); /* Text shadow */
         font-size: 0.9em;
     }
 

@@ -1,16 +1,20 @@
 <script>
+    import "../../styles/map-actions.css";
+    import config from '../../config.js';
+
     import { onMount } from 'svelte';
     import { Button, Icon, Tooltip } from 'yesvelte';
-
     import { Marker, Popup } from 'mapbox-gl';
 
-    import { map, mapContainer, isAddingNote, lastMouseCoords } from '../../stores/Map.js';
-
+    // Components
     import NoteForm from "../Note/NoteForm.js";
 
+    // Libraries
+	import { success, error } from '../../lib/Toasts';
     import Utils from "../../lib/Utils.js";
 
-    import "../../styles/map-actions.css";
+    // Stores
+    import { map, mapContainer, isAddingNote, lastMouseCoords, doneAddingNote } from '../../stores/Map.js';
 
     let addNoteIcon = "plus";
     let addNoteColor = "#0056b3";
@@ -23,6 +27,7 @@
 
     // Enables adding a note mode.
     function addNote() {
+        $doneAddingNote = false;
         if ($isAddingNote) {
             stopAddingNote();
             return;
@@ -118,6 +123,7 @@
             // BUG & TODO: for some reason when popup's close is clicked, the function gets spammed and goes stack overflow and for that reason cancellingNewNote was needed to be implemented.
             if (!cancellingNewNote) {
                 cancellingNewNote = true;
+                console.log("Canceling new note...");
                 handleNoteFormCancel();
                 cancellingNewNote = false;
             }
@@ -140,6 +146,32 @@
 
         const note = { title, message, date, position: newNotePosition };
         console.log('Saving note', note);
+
+        fetch(`${config.API_FQDN}/notes/v1/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(note)
+        })
+        .then(response => {
+            if (response.status === 429) {
+                error("You're too fast adding notes!");
+                throw new Error('Too Many Requests: You are being rate limited.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // The note was created
+            $doneAddingNote = true;
+            console.log('Created a note successfully:', data);
+            success("Created a note successfully!");
+            closeCurrentPopup();
+        })
+        .catch(err => {
+            error("Something went wrong! Can't add your note, please try again.");
+            throw new Error(`Unknown error from API while creating a note: ${err}`);
+        });
     };
 
     /**
@@ -156,6 +188,10 @@
         };
     };
 
+    function closeCurrentPopup() {
+        if (newNotePopup) newNotePopup.remove();
+    };
+
     // On mount, attaches map's container to alter the cursor on map and handle clicks
     onMount(() => {
         if ($mapContainer) $mapContainer.addEventListener('click', handleMapClick);
@@ -168,4 +204,3 @@
     </Button>
     <Tooltip text={addNoteTooltip} placement="left"/>
 </div>
-

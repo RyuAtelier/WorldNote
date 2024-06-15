@@ -1,11 +1,20 @@
 <script>
+  import "../../styles/notes.css";
+  import config from '../../config.js';
+
   import { onMount, onDestroy } from 'svelte';
+  import Mapboxgl from 'mapbox-gl';
+  import { Map, Marker, Popup, NavigationControl } from 'mapbox-gl';
+  import { MapboxAddressAutofill, MapboxSearchBox, MapboxGeocoder } from '@mapbox/search-js-web';
 
-  import { Map, Marker, NavigationControl } from 'mapbox-gl';
+  // Components
+  import Note from "../Note/Note";
 
-  import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css';
+  // Libraries
+  import { success, error } from '../../lib/Toasts';
 
-  import { map, mapContainer, isAddingNote, lastMouseCoords, mapZoom, mapLng, mapLtd } from "../../stores/Map.js";
+  // Stores
+  import { map, mapContainer, isAddingNote, lastMouseCoords, mapZoom, mapLng, mapLtd, loadedNotes, doneAddingNote } from "../../stores/Map.js";
 
   const DEFAULT_LNG = 0;
   const DEFAULT_LAT = 0;
@@ -24,7 +33,7 @@
    * @param lng
    * @param lat
    */
-  function initializeMap(lng, lat) {
+  function initializeMap() {
     const initialState = { lng: $mapLng, lat: $mapLtd, zoom: $mapZoom };
 
     // Create and set a new map
@@ -36,6 +45,17 @@
       zoom: initialState.zoom,
       projection: 'globe' // Globe projection
     });
+
+    // Add a search bar on the map
+    const searchBox = new MapboxSearchBox();
+    searchBox.accessToken = process.env.MAPBOX_API_TOKEN;
+    searchBox.options = {
+        types: 'address,poi',
+        proximity: [-73.99209, 40.68933]
+    };
+    searchBox.marker = true;
+    searchBox.mapboxgl = Mapboxgl;
+    $map.addControl(searchBox);
 
     // Add zoom actions
     $map.addControl(new NavigationControl());
@@ -60,8 +80,82 @@
         'star-intensity': 0.6 // Background star brightness (default 0.35 at low zoooms )
       });
     });
+  };
 
-  }
+  async function loadNotes() {
+    if (!$map) return;
+    const url = new URL(`${config.API_FQDN}/notes/v1/view`);
+    url.searchParams.set('lng', $mapLng);
+    url.searchParams.set('lat', $mapLtd);
+
+    fetch(url, {
+        method: 'GET'
+    })
+    .then(response => {
+        if (response.status === 429) {
+            throw new Error('Too Many Requests: You are being rate limited.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const { results } = data;
+
+        // Extracting noteIds from results
+        const noteObjects = results.map(n => ({ id: n.noteId, data: n }));
+
+        // Filtering out already loaded notes
+        const newNotes = noteObjects.filter(({ id }) => !$loadedNotes[id]);
+
+        // Only do stuff if there are new notes
+        if (newNotes.length > 0) {
+            console.log(`Loaded ${newNotes.length} new notes.`);
+            
+            // Adding new notes to $loadedNotes
+            newNotes.forEach(({ id, data }) => {
+                $loadedNotes[id] = data;
+            });
+
+            // Add notes to the map as marker
+            newNotes.forEach(({ id, data }) => {
+                const note = $loadedNotes[id];
+                const lngLat = [ note.position.coordinates[0], note.position.coordinates[1] ];
+
+                // Initate a HTML for the note with it's data
+                const noteHtml = Note(note);
+                
+                // Create a popup for the marker
+                const notePopup = new Popup()
+                  .setHTML(noteHtml);
+
+                // Create a marker for the note
+                const noteMarker = new Marker({
+                    closeButton: false,
+                    closeOnClick: false
+                })
+                  .setLngLat(lngLat)
+                  .setPopup(notePopup)
+                  .addTo($map);
+
+                  // When the marker is hovered, the popup should be shown and the cancel button should be hidden.
+                  const markerDiv = noteMarker.getElement();
+                  const popupCloseButton = document.querySelector('.mapboxgl-popup-close-button');
+
+                  markerDiv.addEventListener('mouseenter', () => {
+                      noteMarker.togglePopup();
+                      popupCloseButton.style.visibility = 'hidden';
+                  });
+                  markerDiv.addEventListener('mouseleave', () => {
+                      noteMarker.togglePopup();
+                      popupCloseButton.style.visibility = 'visible';
+                  });
+            });
+        }
+    })
+    .catch(err => {
+        error("Something went wrong! Can't view notes, please try again.");
+        throw new Error(`Unknown error from API while viewing notes: ${err}`);
+    });
+  };
 
   onMount(() => {
     // If client allows geolocation, show their location on the $map.
@@ -71,28 +165,35 @@
           $mapLng = position.coords.longitude;
           $mapLtd = position.coords.latitude;
           $mapZoom = 15; // Big enough to show client's area
-          initializeMap(lng, lat);
+          initializeMap();
           console.log("Got client geolocation", position);
         },
         () => {
-          initializeMap(DEFAULT_LNG, DEFAULT_LAT);
+          initializeMap();
           console.log("Using default coordinates");
         }
       );
     }
     // If client doesn't allow it, nor their browser doesn't support geolocation, use default coords. 
     else {
-      initializeMap(DEFAULT_LNG, DEFAULT_LAT);
+      initializeMap();
       console.log("Geolocation not available, using default coordinates.");
     }
   });
 
   // When destroyed remove map
   onDestroy(() => {
-    if (map) {
+    if ($map) {
       $map.remove();
     }
   });
+
+  // When map lng and ltd changes
+  // or
+  // When doneAddingNote changes (which might mean client might've added a new note)
+  // Reload notes
+  $: $mapLng, $mapLtd, loadNotes()
+  $: $doneAddingNote, loadNotes()
 </script>
 
 <div>
