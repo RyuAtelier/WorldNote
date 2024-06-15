@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "dev": "POST=5400 rollup -c -w",
     "start": "sirv public --no-clear --port 5555"
   },
   "devDependencies": {

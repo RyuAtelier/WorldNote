@@ -8,7 +8,7 @@
 
     import NoteForm from "../Note/NoteForm.js";
 
-    import Utils from "../../lib/utils.js";
+    import Utils from "../../lib/Utils.js";
 
     import "../../styles/map-actions.css";
 

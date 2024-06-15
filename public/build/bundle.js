@@ -11570,7 +11570,7 @@
 
 	let isAddingNote = writable(false);
 
-	let mapZoom = writable(0);
+	let mapZoom = writable(2);
 	let mapLng = writable(0);
 	let mapLtd = writable(0);
 
