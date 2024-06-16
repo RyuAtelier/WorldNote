@@ -182,3 +182,37 @@ hr.solid {
     font-size: 25px;
 }
 .footer.svelte-vv57p5.svelte-vv57p5{position:fixed;bottom:0;left:0;right:0;width:100%;text-align:center;color:white;padding:10px 0;text-shadow:1px 1px 2px rgba(0, 0, 0, 1);font-size:0.9em}.footer.svelte-vv57p5 a.svelte-vv57p5{color:white;text-decoration:none;margin:0 10px}
+.extras-container {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 165px;
+    text-align: left;
+    /* margin-top: -124px; */
+    overflow-y: auto;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.goback-button {
+    padding: 11px;
+    margin: 25px;
+    z-index: 999999;
+    position: fixed;
+    top: 0px;
+    left: 2px;
+}
+
+.extras-container ul {
+    list-style-position: inside;
+    padding-left: 20px;
+    text-align: left; 
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.extras-container ul li {
+    margin-bottom: 10px;
+}
+

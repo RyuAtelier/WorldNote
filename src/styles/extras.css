@@ -1,0 +1,33 @@
+.extras-container {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 165px;
+    text-align: left;
+    /* margin-top: -124px; */
+    overflow-y: auto;
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.goback-button {
+    padding: 11px;
+    margin: 25px;
+    z-index: 999999;
+    position: fixed;
+    top: 0px;
+    left: 2px;
+}
+
+.extras-container ul {
+    list-style-position: inside;
+    padding-left: 20px;
+    text-align: left; 
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.extras-container ul li {
+    margin-bottom: 10px;
+}

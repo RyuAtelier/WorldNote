@@ -129,7 +129,8 @@
                 // Create a popup for the marker
                 const notePopup = new Popup({
                     closeButton: false,
-                    closeOnClick: false
+                    closeOnClick: false,
+                    closeOnMove: true
                 })
                   .setHTML(noteHtml);
 

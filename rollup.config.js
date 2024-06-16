@@ -6,8 +6,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 import json from '@rollup/plugin-json';
-import dotenv from "rollup-plugin-dotenv";
-import { obfuscator } from 'rollup-obfuscator';
+import dotenv from "rollup-plugin-dotenv"
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -66,9 +65,18 @@ export default {
 		}),
 		commonjs(),
 
-		terser(),
-		dotenv(),
-		obfuscator()
+		// In dev mode, call `npm run start` once
+		// the bundle has been generated
+		!production && serve(),
+
+		// Watch the `public` directory and refresh the
+		// browser on changes when not in production
+		!production && livereload('public'),
+
+		// If we're building for production (npm run build
+		// instead of npm run dev), minify
+		production && terser(),
+		dotenv()
 	],
 	watch: {
 		clearScreen: false

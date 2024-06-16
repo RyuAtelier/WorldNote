@@ -1,5 +1,6 @@
 <!-- Footer.svelte -->
 <script>
+    import { link } from "svelte-spa-router";
     import { mapLng, mapLtd } from "../stores/Map"; // Import your longitude and latitude stores
 
     // Function to get the current date
@@ -25,8 +26,9 @@
 
     <!-- Privacy policy and terms of use links -->
     <div>
-        <a href="/privacy-policy">Privacy Policy</a> |
-        <a href="/terms-of-use">Terms of Use</a>
+        <a href="/about" use:link>About</a> |
+        <a href="/privacy-policy" use:link>Privacy Policy</a> |
+        <a href="/terms-of-use" use:link>Terms of Use</a>
     </div>
 </div>
 
