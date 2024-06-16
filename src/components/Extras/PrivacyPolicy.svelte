@@ -11,7 +11,7 @@
     <Icon name="arrow-left" />Go back
 </Button>
 
-<El container class="extras-container">
+<El container class="privacy-container">
     <h1 class="extras-wn-title">🌎 WorldNote</h1>
     
     <El row alignItems="end">

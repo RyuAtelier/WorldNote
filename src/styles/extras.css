@@ -11,6 +11,19 @@
     overflow-x: hidden;
 }
 
+.privacy-container {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 165px;
+    text-align: center;
+    margin-top: -50px;
+    overflow-y: auto;
+    /* overflow-x: scroll; /
+    / height: 1px; */
+    height: 120vh;
+}
+
 .goback-button {
     padding: 11px;
     margin: 25px;
