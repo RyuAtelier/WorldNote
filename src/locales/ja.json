@@ -45,5 +45,11 @@
     "noteform_placeholder_05_title": "🏛️ 歴史的な名所",
     "noteform_placeholder_05_message": "この名所で起こった歴史的な出来事は何ですか？",
     "noteform_placeholder_06_title": "🌅 ビーチの夕日",
-    "noteform_placeholder_06_message": "このビーチで夕日を見ているときの体験を説明してください。"
+    "noteform_placeholder_06_message": "このビーチで夕日を見ているときの体験を説明してください。",
+    "invalid_arguments": "リクエストが無効です！",
+    "note_against_moderation": "ノートが利用規約に違反しています。投稿されません！",
+    "cant_create_note": "ノートの作成中にエラーが発生しました！",
+    "cant_view_notes": "ノートの表示中にエラーが発生しました！",
+    "rate_limited": "このIPから作成されたノートが多すぎます。後でもう一度お試しください！"
+
 }

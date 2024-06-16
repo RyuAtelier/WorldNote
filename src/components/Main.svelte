@@ -15,7 +15,7 @@
 
     import Utils from "../lib/Utils.js";
 
-    import { version, state, clientIp, clientLang } from "../stores/App";
+    import { version, state, clientIp, clientLang, clientCountry, totalNoteCount, errorCodes } from "../stores/App";
 
     let isLoaded = false;
     let preloadDone = false;
@@ -39,6 +39,9 @@
                 $state = data.state;
                 $clientIp = data.ip;
                 $clientLang = data.clientLang;
+                $clientCountry = data.clientCountry;
+                $totalNoteCount = data.noteCount;
+                $errorCodes = data.errorCodes;
 
                 // Wait 1.5 seconds to give it a loading feeling.
                 await new Promise(resolve => setTimeout(resolve, 1500));

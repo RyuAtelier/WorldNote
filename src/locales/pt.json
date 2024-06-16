@@ -45,5 +45,11 @@
     "noteform_placeholder_05_title": "🏛️ Marco Histórico",
     "noteform_placeholder_05_message": "Que eventos históricos ocorreram neste marco?",
     "noteform_placeholder_06_title": "🌅 Pôr do Sol na Praia",
-    "noteform_placeholder_06_message": "Descreva sua experiência assistindo ao pôr do sol nesta praia."
+    "noteform_placeholder_06_message": "Descreva sua experiência assistindo ao pôr do sol nesta praia.",
+    "invalid_arguments": "O seu pedido é inválido!",
+    "note_against_moderation": "O seu comentário está contra os Termos de Uso. Não será publicado!",
+    "cant_create_note": "Erro ao tentar criar a nota!",
+    "cant_view_notes": "Erro ao tentar visualizar as notas!",
+    "rate_limited": "Demasiadas notas criadas a partir deste IP, por favor tente novamente mais tarde!"
+
 }

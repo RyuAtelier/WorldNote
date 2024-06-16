@@ -45,5 +45,11 @@
     "noteform_placeholder_05_title": "🏛️ Site Historique",
     "noteform_placeholder_05_message": "Quels événements historiques se sont déroulés sur ce site ?",
     "noteform_placeholder_06_title": "🌅 Coucher de Soleil sur la Plage",
-    "noteform_placeholder_06_message": "Décrivez votre expérience en regardant le coucher de soleil sur cette plage."
+    "noteform_placeholder_06_message": "Décrivez votre expérience en regardant le coucher de soleil sur cette plage.",
+    "invalid_arguments": "Votre requête est invalide!",
+    "note_against_moderation": "Votre note est contraire aux Conditions d'Utilisation. Elle ne sera pas publiée!",
+    "cant_create_note": "Erreur lors de la tentative de création de la note!",
+    "cant_view_notes": "Erreur lors de la tentative de visualisation des notes!",
+    "rate_limited": "Trop de notes créées à partir de cette adresse IP, veuillez réessayer plus tard!"
+
 }

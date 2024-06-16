@@ -45,5 +45,10 @@
     "noteform_placeholder_05_title": "🏛️ Tarihi Anıt",
     "noteform_placeholder_05_message": "Bu tarihi anıtta hangi tarihî olaylar gerçekleşti?",
     "noteform_placeholder_06_title": "🌅 Sahil Gün Batımı",
-    "noteform_placeholder_06_message": "Bu sahilde gün batımını izlerken yaşadığınız deneyimi anlatın."
+    "noteform_placeholder_06_message": "Bu sahilde gün batımını izlerken yaşadığınız deneyimi anlatın.",
+    "invalid_arguments": "Geçersiz bir istekte bulundunuz!",
+    "note_against_moderation": "Notunuz Kullanım Koşullarına aykırıdır. Paylaşılmayacaktır!",
+    "cant_create_note": "Not oluşturulmaya çalışılırken bir hata oluştu!",
+    "cant_view_notes": "Notlar görüntülenirken bir hata oluştu!",
+    "rate_limited": "Bu IP'den çok fazla not oluşturuldu, lütfen daha sonra tekrar deneyin!"
 }

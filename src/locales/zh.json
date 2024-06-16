@@ -45,5 +45,10 @@
     "noteform_placeholder_05_title": "🏛️ 历史地标",
     "noteform_placeholder_05_message": "这个地标发生了什么历史事件？",
     "noteform_placeholder_06_title": "🌅 海滩日落",
-    "noteform_placeholder_06_message": "描述你在这个海滩看日落的经历。"
+    "noteform_placeholder_06_message": "描述你在这个海滩看日落的经历。",
+    "invalid_arguments": "您的请求无效！",
+    "note_against_moderation": "您的笔记违反了使用条款。不会发布！",
+    "cant_create_note": "创建笔记时出错！",
+    "cant_view_notes": "查看笔记时出错！",
+    "rate_limited": "从此IP创建的笔记太多，请稍后再试！"
 }

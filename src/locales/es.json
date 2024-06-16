@@ -45,5 +45,10 @@
     "noteform_placeholder_05_title": "🏛️ Lugar Histórico",
     "noteform_placeholder_05_message": "¿Qué eventos históricos ocurrieron en este lugar?",
     "noteform_placeholder_06_title": "🌅 Atardecer en la Playa",
-    "noteform_placeholder_06_message": "Describe tu experiencia viendo el atardecer en esta playa."
+    "noteform_placeholder_06_message": "Describe tu experiencia viendo el atardecer en esta playa.",
+    "invalid_arguments": "¡Tu solicitud es inválida!",
+    "note_against_moderation": "¡Tu nota está en contra de los Términos de Uso. No será publicada!",
+    "cant_create_note": "¡Error al intentar crear la nota!",
+    "cant_view_notes": "¡Error al intentar ver las notas!",
+    "rate_limited": "Se han creado demasiadas notas desde esta IP, por favor inténtalo de nuevo más tarde!"
 }
