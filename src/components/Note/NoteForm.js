@@ -1,55 +1,37 @@
-function getRandomContext() {
-    const titles = [
-        {
-            title: "🏚️ Abandoned Building",
-            message: "What memories do you associate with this abandoned building?"
-        },
-        {
-            title: "🌳 Local Park",
-            message: "What's your favorite memory in this park?"
-        },
-        {
-            title: "☕ Café Corner",
-            message: "What special moments have you experienced at this café?"
-        },
-        {
-            title: "⛰️ Mountain Peak",
-            message: "What did you feel when you reached this mountain peak?"
-        },
-        {
-            title: "🏛️ Historical Landmark",
-            message: "What historical events took place at this landmark?"
-        },
-        {
-            title: "🌅 Beach Sunset",
-            message: "Describe your experience watching the sunset at this beach."
-        }
-        // Add more titles with relevant messages as needed
-    ];
-    const randomIndex = Math.floor(Math.random() * titles.length);
-    return titles[randomIndex];
+function getRandomContext(placeholders) {
+    const randomIndex = Math.floor(Math.random() * placeholders.length);
+    return placeholders[randomIndex];
 };
 
-export default () => {
-    const context = getRandomContext();
+export default (locs = { 
+        notes_new_note,
+        notes_title,
+        notes_message,
+        notes_date,
+        notes_save,
+        notes_disclaimer_01,
+        notes_disclaimer_02 
+    }, 
+    placeholderLocs) => {
+    const context = getRandomContext(placeholderLocs);
     return `
     <div class="note-form">
-        <h2>✍️ Create a New Note</h2>
+        <h2>${locs.notes_new_note}</h2>
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">${locs.notes_title}</label>
             <input type="text" id="title" placeholder="${context.title}" />
         </div>
         <div class="form-group">
-            <label for="message">Message</label>
+            <label for="message">${locs.notes_message}</label>
             <textarea id="message" placeholder="${context.message}" ></textarea>
         </div>
         <div class="form-group">
-            <label for="date">Date (in case it's a past event)</label>
+            <label for="date">${locs.notes_date}</label>
             <input type="datetime-local" id="date" />
         </div>
-        <button id="saveNote" disabled>Save</button>
-        <p id="noteDisclaimer">By saving this note, you acknowledge that it will be public to the whole world.</p>
-        <p id="noteDisclaimer">Some characters may not be allowed.</p>
+        <button id="saveNote" disabled>${locs.notes_save}</button>
+        <p id="noteDisclaimer">${locs.notes_disclaimer_01}</p>
+        <p id="noteDisclaimer">${locs.notes_disclaimer_02}</p>
     </div>
     `;
 };

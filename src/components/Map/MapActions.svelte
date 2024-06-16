@@ -5,6 +5,7 @@
     import { onMount } from 'svelte';
     import { Button, Icon, Tooltip } from 'yesvelte';
     import { Marker, Popup } from 'mapbox-gl';
+    import { _, locales } from "svelte-i18n";
 
     // Components
     import NoteForm from "../Note/NoteForm.js";
@@ -15,10 +16,11 @@
 
     // Stores
     import { map, mapContainer, isAddingNote, lastMouseCoords, doneAddingNote } from '../../stores/Map.js';
+    import { clientLang } from "../../stores/App";
 
     let addNoteIcon = "plus";
     let addNoteColor = "#0056b3";
-    let addNoteTooltip = "Add A Note";
+    let addNoteTooltip = $_("mapactions_add_note");
 
     let newNotePosition = null;
     let newNotePopup = null;
@@ -38,7 +40,7 @@
 
         addNoteIcon = "x";
         addNoteColor = "red";
-        addNoteTooltip = "Cancel";
+        addNoteTooltip = $_("mapactions_cancel_note");
 
         // If mapContainer is loaded, set the cursor to cell if adding note is enabled.
         if ($mapContainer) {
@@ -54,7 +56,7 @@
 
         addNoteIcon = "plus";
         addNoteColor = "#0056b3";
-        addNoteTooltip = "Add A Note";
+        addNoteTooltip = $_("mapactions_add_note");
 
         // If mapContainer is loaded, reset the cursor when adding note is exited.
         if ($mapContainer) {
@@ -83,13 +85,48 @@
      */
     function createNoteForm() {
         console.log("Creating a note to fill at coords:", newNotePosition);
-
+        
         const lngLat = [newNotePosition.lng, newNotePosition.lat];
+        const noteFormLocales = {
+            notes_new_note: $_("notes_new_note"),
+            notes_title: $_("notes_title"),
+            notes_message: $_("notes_message"),
+            notes_date: $_("notes_date"),
+            notes_save: $_("notes_save"),
+            notes_disclaimer_01: $_("notes_disclaimer_01"),
+            notes_disclaimer_02: $_("notes_disclaimer_02")
+        };
+        const contextLocales = [
+            {
+                title: $_("noteform_placeholder_01_title"),
+                message: $_("noteform_placeholder_01_message"),
+            },
+            {
+                title: $_("noteform_placeholder_02_title"),
+                message: $_("noteform_placeholder_02_message"),
+            },
+            {
+                title: $_("noteform_placeholder_03_title"),
+                message: $_("noteform_placeholder_03_message"),
+            },
+            {
+                title: $_("noteform_placeholder_04_title"),
+                message: $_("noteform_placeholder_04_message"),
+            },
+            {
+                title: $_("noteform_placeholder_05_title"),
+                message: $_("noteform_placeholder_05_message"),
+            },
+            {
+                title: $_("noteform_placeholder_06_title"),
+                message: $_("noteform_placeholder_06_message"),
+            }
+        ];
 
         // Since we can't pass components to setHTML, we have to set it via pure HTML...
         // TODO: find a solution for this maybe?
         newNotePopup = new Popup({ closeOnClick: false, anchor: "left", maxWidth: "500px" })
-            .setHTML(NoteForm())
+            .setHTML(NoteForm(noteFormLocales, contextLocales))
             .on('open', () => {
                 // Since we use pure HTML and cant use svelte components, we need to detect if title and message are filled
                 // and disable/enable button in that case.
@@ -156,7 +193,7 @@
         })
         .then(response => {
             if (response.status === 429) {
-                error("You're too fast adding notes!");
+                error($_("popups_err_too_fast"));
                 throw new Error('Too Many Requests: You are being rate limited.');
             }
             return response.json();
@@ -165,11 +202,11 @@
             // The note was created
             $doneAddingNote = true;
             console.log('Created a note successfully:', data);
-            success("Created a note successfully!");
+            success($_("popups_ok_note_added"));
             closeCurrentPopup();
         })
         .catch(err => {
-            error("Something went wrong! Can't add your note, please try again.");
+            error($_("popups_err_cant_add_note"));
             throw new Error(`Unknown error from API while creating a note: ${err}`);
         });
     };

@@ -6,6 +6,7 @@
   import Mapboxgl from 'mapbox-gl';
   import { Map, Marker, Popup, NavigationControl } from 'mapbox-gl';
   import { MapboxAddressAutofill, MapboxSearchBox, MapboxGeocoder } from '@mapbox/search-js-web';
+  import { _, locale } from "svelte-i18n";
 
   // Components
   import Note from "../Note/Note";
@@ -15,6 +16,7 @@
 
   // Stores
   import { map, mapContainer, isAddingNote, lastMouseCoords, mapZoom, mapLng, mapLtd, loadedNotes, doneAddingNote } from "../../stores/Map.js";
+    import MapboxLanguage from "@mapbox/mapbox-gl-language";
 
   const DEFAULT_LNG = 0;
   const DEFAULT_LAT = 0;
@@ -43,7 +45,8 @@
       style: `mapbox://styles/mapbox/outdoors-v11`,
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom,
-      projection: 'globe' // Globe projection
+      projection: 'globe',
+      
     });
 
     // Load notes inital
@@ -83,6 +86,8 @@
         'star-intensity': 0.6 // Background star brightness (default 0.35 at low zoooms )
       });
     });
+
+    // INFO: map language is set by App.svelte
   };
 
   async function loadNotes() {
@@ -122,9 +127,12 @@
             newNotes.forEach(({ id, data }) => {
                 const note = $loadedNotes[id];
                 const lngLat = [ note.position.coordinates[0], note.position.coordinates[1] ];
+                const noteLocs = {
+                  notes_note: $_("notes_note") + note.noteNumber
+                };
 
                 // Initate a HTML for the note with it's data
-                const noteHtml = Note(note);
+                const noteHtml = Note(note, noteLocs, locale);
                 
                 // Create a popup for the marker
                 const notePopup = new Popup({
@@ -153,7 +161,7 @@
         }
     })
     .catch(err => {
-        error("Something went wrong! Can't view notes, please try again.");
+        error($_("popups_err_cant_add_note"));
         throw new Error(`Unknown error from API while viewing notes: ${err}`);
     });
   };

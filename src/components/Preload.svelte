@@ -1,28 +1,34 @@
 <script>
     import "../styles/preload.css";
     import { El, Spinner } from 'yesvelte';
+    import { _ } from "svelte-i18n";
 
     import { version, state } from "../stores/App";
 
-    const preloadTexts = [
-        "Leave a memory on Earth.",
-        "Pin your story to the world map.",
-        "Share your moment with the globe.",
-        "Drop a note, leave your mark.",
-        "Make your presence felt across the continents.",
-        "Plant your memory in the global garden.",
-        "Let your voice echo across borders.",
-        "Connect your story to the world's canvas.",
-        "Imprint your legacy on the map of memories.",
-        "Leave your digital footprint on Earth.",
-        "Chart your adventures for the world to explore."
-    ];
-    let preloadMessage = getRandomPreloadText();
+    let randomText = "";
 
 	// Returns a random message
     function getRandomPreloadText() {
-        return preloadTexts[Math.floor(Math.random() * preloadTexts.length)];
+        setTimeout(() => {
+            const preloadTexts = [
+                $_("preload_welcome_text_01"),
+                $_("preload_welcome_text_02"),
+                $_("preload_welcome_text_03"),
+                $_("preload_welcome_text_04"),
+                $_("preload_welcome_text_05"),
+                $_("preload_welcome_text_06"),
+                $_("preload_welcome_text_07"),
+                $_("preload_welcome_text_08"),
+                $_("preload_welcome_text_09"),
+                $_("preload_welcome_text_10"),
+                $_("preload_welcome_text_11")
+            ];
+            const random = preloadTexts[Math.floor(Math.random() * preloadTexts.length)];
+            randomText = random; 
+        }, 500)
     };
+
+    getRandomPreloadText();
 </script>
 
 <El container class="container">
@@ -33,7 +39,7 @@
         <El col class="preload-version">{$state} {$version}</El>
     </El>
     <El row>
-        <El col class="preload-message">{preloadMessage}</El>
+        <El col class="preload-message">{randomText}</El>
     </El>
     <El row>
         <El col>

@@ -2,6 +2,7 @@
 	import "../styles/navbar.css";
 
 	import { El, Navbar, NavbarItem } from 'yesvelte';
+    import { _ } from "svelte-i18n";
 </script>
 
 <Navbar theme="dark">
@@ -10,6 +11,7 @@
 			<El tag="small" class="version-text">Beta 1.0.1</El>
 		</El>
 	</El>
-	<NavbarItem icon="brand-discord" title="Discord" href="https://discord.gg/EdcMqrY8fP"/>
-	<NavbarItem icon="mail" title="Contact" href="mailto:hello@noteonthe.world" target="_blank"/>
+	<NavbarItem icon="brand-x" title={$_("navbar_twitter")} href="https://x.com/noteontheworld" target="_blank"/>
+	<NavbarItem icon="brand-discord" title={$_("navbar_discord")} href="https://discord.gg/EdcMqrY8fP" target="_blank"/>
+	<NavbarItem icon="mail" title={$_("navbar_contact")} href="mailto:hello@noteonthe.world" target="_blank"/>
 </Navbar>

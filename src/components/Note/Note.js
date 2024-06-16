@@ -1,9 +1,10 @@
 import utils from "../../lib/Utils";
+import { _ } from "svelte-i18n";
 
-export default (formData) => {
+export default (formData, locs = { notes_note }, locale) => {
     return `
     <div class="note-data">
-        <h2 class="note-notenumber">✍🏻 Note #${formData.noteNumber}</h2>
+        <h2 class="note-notenumber">${locs.notes_note}</h2>
         <div class="data-group note-title">
             ${formData.title}
         </div>
@@ -12,7 +13,7 @@ export default (formData) => {
             ${formData.message}
         </div>
         <div class="data-group note-date">
-            ${utils.formatDate(formData.date)}
+            ${utils.formatDate(formData.date, locale)}
         </div>
     </div>
     `;

@@ -6,7 +6,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 import json from '@rollup/plugin-json';
-import dotenv from "rollup-plugin-dotenv"
+import dotenv from "rollup-plugin-dotenv";
 
 const production = (process.env?.PM2_ENV && process.env?.PM2_ENV == "prod") || !process.env.ROLLUP_WATCH;
 console.log(`Is rollup prod? : ${production}`);
