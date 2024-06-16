@@ -42,4 +42,9 @@
       Together, we can build a tapestry of memories that spans the globe.
     </p>
   </El>
+  <El row alignItems="end">
+    <p>
+      Made with ❤️ by Ryu Atelier Team, with the help of MapBox.
+    </p>
+  </El>
 </El>
