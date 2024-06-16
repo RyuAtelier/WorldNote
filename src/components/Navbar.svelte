@@ -10,8 +10,6 @@
 		padding-right: 15px;
 		">🌎 WorldNote</El>
 	</El>
-	<NavbarItem icon="map" title="Map" active/>
-	<NavbarItem icon="info-circle" title="Info"/>
-	<NavbarItem icon="mail" title="Contact"/>
-	<NavbarItem icon="brand-discord" title="Discord"/>
+	<NavbarItem icon="brand-discord" title="Discord" href="https://discord.gg/EdcMqrY8fP"/>
+	<NavbarItem icon="mail" title="Contact" href="mailto:hello@noteonthe.world" target="_blank"/>
 </Navbar>

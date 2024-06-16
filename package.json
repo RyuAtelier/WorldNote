@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "dev": "POST=5400 rollup -c -w",
-    "start": "sirv public --no-clear --port 5555"
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear --port 8840"
   },
   "devDependencies": {
     "@beyonk/svelte-mapbox": "^9.1.1",
@@ -33,6 +33,7 @@
     "fs": "^0.0.1-security",
     "iconify-icon": "^2.0.0",
     "mapbox-gl": "^3.4.0",
+    "rollup-obfuscator": "^4.1.1",
     "rollup-plugin-dotenv": "^0.5.1",
     "sirv-cli": "^2.0.2",
     "yesvelte": "^0.0.2-next.217"

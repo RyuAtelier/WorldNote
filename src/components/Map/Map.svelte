@@ -46,6 +46,9 @@
       projection: 'globe' // Globe projection
     });
 
+    // Load notes inital
+    loadNotes();
+
     // Add a search bar on the map
     const searchBox = new MapboxSearchBox();
     searchBox.accessToken = process.env.MAPBOX_API_TOKEN;

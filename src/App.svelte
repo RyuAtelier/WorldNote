@@ -19,7 +19,6 @@
 
     let isLoaded = false;
     let preloadDone = false;
-    let isDev = Utils.isDev();
 
     async function preload() {
         // Skip preload if we're in dev environment
@@ -63,7 +62,7 @@
 
 <El container>
     <!-- Load with preload on top -->
-    {#if !preloadDone && !isDev}
+    {#if !preloadDone}
         <div class="preload-container" transition:fade="{{ duration: 500 }}" style="z-index: 99999999 !important;">
             <Preload/>
         </div>

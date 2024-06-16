@@ -6,7 +6,7 @@ class Utils {
         return regex.test(text);
     };
 
-    isDev(env = process.env.ENV) {
+    isDev(env) {
         return ["dev", "local"].includes(env);
     };
 

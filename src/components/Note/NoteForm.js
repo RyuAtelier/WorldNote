@@ -44,7 +44,7 @@ export default () => {
             <textarea id="message" placeholder="${context.message}" ></textarea>
         </div>
         <div class="form-group">
-            <label for="date">Date</label>
+            <label for="date">Date (in case it's a past event)</label>
             <input type="datetime-local" id="date" />
         </div>
         <button id="saveNote" disabled>Save</button>
