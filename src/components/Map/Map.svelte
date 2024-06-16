@@ -132,7 +132,7 @@
                 };
 
                 // Initate a HTML for the note with it's data
-                const noteHtml = Note(note, noteLocs, locale);
+                const noteHtml = Note(note, noteLocs, $locale);
                 
                 // Create a popup for the marker
                 const notePopup = new Popup({

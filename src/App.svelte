@@ -1,19 +1,39 @@
 <script>
     import Router, { link } from "svelte-spa-router";
     import { addMessages, init, getLocaleFromNavigator, locale } from "svelte-i18n";
-    import { clientLang } from "./stores/App.js";
+    import MapboxLanguage from "@mapbox/mapbox-gl-language";
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const queryLang = urlParams.get('lang') || null;
 
     import { routes } from "./routes.js";
 
-    // Localization JSONs
+    // Stores
+    import { clientLang } from "./stores/App.js";
+    import { map } from "./stores/Map.js";
+
     import en from "./locales/en.json";
     import tr from "./locales/tr.json";
-    import { map } from "./stores/Map.js";
-    import MapboxLanguage from "@mapbox/mapbox-gl-language";
+    import es from "./locales/es.json";
+    import ru from "./locales/ru.json";
+    import it from "./locales/it.json";
+    import zh from "./locales/zh.json";
+    import ja from "./locales/ja.json";
+    import ko from "./locales/ko.json";
+    import pt from "./locales/pt.json";
+    import fr from "./locales/fr.json";
 
     // Import locales
     addMessages("en", en);
     addMessages("tr", tr);
+    addMessages("es", es);
+    addMessages("ru", ru);
+    addMessages("it", it);
+    addMessages("zh", zh);
+    addMessages("ja", ja);
+    addMessages("ko", ko);
+    addMessages("pt", pt);
+    addMessages("fr", fr);
 
     // Since client lang gets set after preload info request, we have to set it in $:
     // TODO: maybe better solution for this?
@@ -21,7 +41,7 @@
         console.log("Loaded info from API", $clientLang)
         init({
             fallbackLocale: "en",
-            initialLocale: $clientLang
+            initialLocale: queryLang || $clientLang
         });
 
         // Set map language
