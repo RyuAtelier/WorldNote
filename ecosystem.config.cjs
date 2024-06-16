@@ -6,10 +6,10 @@ module.exports = {
         args: "run dev",
         watch: false,
         env: {
-          ENV: "dev"
+          PM2_ENV: "dev"
         },
         env_prod: {
-          ENV: "prod"
+          PM2_ENV: "prod"
         }
       }
     ]
