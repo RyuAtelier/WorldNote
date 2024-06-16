@@ -76,7 +76,9 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser(),
+		production && terser({
+			compress: { drop_console: true, drop_debugger: true }
+		}),
 		dotenv()
 	],
 	watch: {
