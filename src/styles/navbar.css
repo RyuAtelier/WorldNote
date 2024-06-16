@@ -1,0 +1,14 @@
+.navbar-logo {
+    padding-top: 7px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    position: relative;
+}
+.version-text {
+    display: block;
+    font-size: 0.75rem;
+    color: #aaa;
+    text-align: right;
+    margin-top: -12px;
+    font-weight: 200;
+}
