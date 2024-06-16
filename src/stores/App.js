@@ -4,6 +4,9 @@ export let state = writable("");
 export let version = writable("");
 export let clientIp = writable("");
 export let clientLang = writable("");
+export let clientCountry = writable("");
+export let totalNoteCount = writable(0);
+export let errorCodes = writable(Object);
 
 export let isDarkMode = writable(true);
 

@@ -16,7 +16,7 @@
 
     // Stores
     import { map, mapContainer, isAddingNote, lastMouseCoords, doneAddingNote } from '../../stores/Map.js';
-    import { clientLang } from "../../stores/App";
+    import { clientLang, errorCodes } from "../../stores/App";
 
     let addNoteIcon = "plus";
     let addNoteColor = "#0056b3";
@@ -192,10 +192,16 @@
             body: JSON.stringify(note)
         })
         .then(response => {
-            if (response.status === 429) {
-                error($_("popups_err_too_fast"));
-                throw new Error('Too Many Requests: You are being rate limited.');
-            }
+            if (!response.ok) {
+                return response.json().then(err => {
+                    const errorCodeId = err.code;
+                    const message = err.message;
+                    const errorKey = Object.keys($errorCodes).find(key => $errorCodes[key] === errorCodeId);
+
+                    error($_(errorKey.toLowerCase()));
+                    throw new Error(`API Error: ${message} (Code ID: ${errorCodeId} / Code Key: ${errorKey})`);
+                });
+            };
             return response.json();
         })
         .then(data => {
@@ -206,8 +212,6 @@
             closeCurrentPopup();
         })
         .catch(err => {
-            error($_("popups_err_cant_add_note"));
-            throw new Error(`Unknown error from API while creating a note: ${err}`);
         });
     };
 

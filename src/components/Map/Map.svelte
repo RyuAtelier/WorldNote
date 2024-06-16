@@ -161,7 +161,7 @@
         }
     })
     .catch(err => {
-        error($_("popups_err_cant_add_note"));
+        error($_("cant_view_notes"));
         throw new Error(`Unknown error from API while viewing notes: ${err}`);
     });
   };

@@ -45,5 +45,10 @@
     "noteform_placeholder_05_title": "🏛️ Luogo Storico",
     "noteform_placeholder_05_message": "Quali eventi storici hanno avuto luogo in questo luogo?",
     "noteform_placeholder_06_title": "🌅 Tramonto sulla Spiaggia",
-    "noteform_placeholder_06_message": "Descrivi la tua esperienza guardando il tramonto su questa spiaggia."
+    "noteform_placeholder_06_message": "Descrivi la tua esperienza guardando il tramonto su questa spiaggia.",
+    "invalid_arguments": "La tua richiesta non è valida!",
+    "note_against_moderation": "La tua nota è contro i Termini di Utilizzo. Non verrà pubblicata!",
+    "cant_create_note": "Errore durante il tentativo di creare la nota!",
+    "cant_view_notes": "Errore durante il tentativo di visualizzare le note!",
+    "rate_limited": "Troppe note create da questo IP, per favore riprova più tardi!"
 }
