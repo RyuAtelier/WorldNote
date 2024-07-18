@@ -1,0 +1,60 @@
+# Custom Contribution License
+
+## Preamble
+
+This license establishes the terms under which the Software may be used, modified, and contributed to, while restricting the ability to host or deploy the Software as a standalone application. The intent of this license is to encourage collaboration and improvement of the Software while ensuring that the original author retains exclusive rights to its deployment.
+
+## Terms and Conditions
+
+### 1. Grant of License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, subject to the following conditions:
+
+### 2. Contributions
+
+2.1 Contributions to the Software are encouraged and welcomed. Contributors may:
+   - Use the Software for personal and internal business purposes, including development and testing.
+   - Modify the Software to improve functionality, fix bugs, or add features.
+   - Submit patches, updates, or other improvements to the original repository, subject to the contribution guidelines set forth by the original author.
+
+2.2 All contributions made to the original repository shall be licensed under the same terms as the Software, ensuring that improvements remain freely available to the community.
+
+### 3. Restrictions on Hosting and Deployment
+
+3.1 The Software, including any derivative works, may not be hosted, deployed, or offered as a standalone application or service by any party other than the original author(s). This restriction includes, but is not limited to:
+   - Deploying the Software on public or private servers, cloud platforms, or any other hosting infrastructure.
+   - Offering the Software as a service, whether free or paid, to third parties.
+
+3.2 Any attempt to circumvent the hosting and deployment restrictions outlined in this license will be considered a violation of the license terms.
+
+### 4. Distribution
+
+4.1 Redistribution of the Software or derivative works is permitted, provided that the following conditions are met:
+   - The redistributed Software must include a copy of this license and retain all copyright, patent, and trademark notices, along with a disclaimer of any warranties.
+   - The redistributed Software must include the following acknowledgment: "This software includes contributions from [Your Name/Original Author]. Unauthorized hosting or deployment of this software is prohibited."
+
+### 5. Trademarks
+
+5.1 This license does not grant permission to use the trade names, trademarks, service marks, or product names of the licensor, except as required for describing the origin of the Software and reproducing the content of the NOTICE file.
+
+### 6. Disclaimer of Warranty
+
+6.1 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+### 7. Limitation of Liability
+
+7.1 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THE SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+### 8. Termination
+
+8.1 This license and the rights granted hereunder will terminate automatically if any of the conditions are breached. Upon termination, you must immediately cease use of the Software and destroy all copies of the Software in your possession or control.
+
+### 9. Governing Law
+
+9.1 This license shall be governed by and construed in accordance with the laws of the jurisdiction in which the original author resides, without regard to its conflict of law principles.
+
+### 10. Miscellaneous
+
+10.1 If any provision of this license is held to be unenforceable, such provision shall be reformed only to the extent necessary to make it enforceable. This license constitutes the entire agreement between the parties with respect to the Software and supersedes all prior or contemporaneous understandings regarding such subject matter.
+
+By using, modifying, or contributing to the Software, you agree to abide by the terms and conditions of this license.
