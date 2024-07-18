@@ -12,6 +12,7 @@
 		</El>
 	</El>
 	<NavbarItem icon="brand-x" title={$_("navbar_twitter")} href="https://x.com/noteontheworld" target="_blank"/>
-	<NavbarItem icon="brand-discord" title={$_("navbar_discord")} href="https://discord.gg/EdcMqrY8fP" target="_blank"/>
+	<NavbarItem icon="brand-discord" title={$_("navbar_discord")} href="https://discord.gg/D36HJ8HsV6" target="_blank"/>
+	<NavbarItem icon="brand-github" title={$_("navbar_github")} href="https://github.com/RyuAtelier" target="_blank"/>
 	<NavbarItem icon="mail" title={$_("navbar_contact")} href="mailto:hello@noteonthe.world" target="_blank"/>
 </Navbar>
