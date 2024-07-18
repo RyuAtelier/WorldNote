@@ -26,6 +26,32 @@ WorldNote is currently in beta and constantly evolving. We appreciate and welcom
 - Provide clear and concise commit messages.
 - Include detailed descriptions in your pull requests.
 
+## How to deploy?
+
+To deploy WorldNote, follow these steps:
+
+1. **Clone the Repository**: First, clone the WorldNote repository to your local machine:
+   ```sh
+   git clone https://github.com/RyuAtelier/WorldNote.git
+   cd WorldNote
+   ```
+
+2. **Install Dependencies**: Install all required dependencies using npm:
+   ```sh
+   npm install
+   npm install --only=dev
+   ```
+
+3. **Development Mode**: If you want to work on the project and need automatic re-deployment on file changes, use:
+   ```sh
+   npm run dev
+   ```
+   This command sets up a development environment and watches for changes in the directory.
+
+4. **Production Deployment**: For a production deployment, use your deployment script (`deploy.sh`). Ensure the script is correctly configured for your production environment.
+
+By following these steps, you can effectively set up and deploy WorldNote in both development and production environments.
+
 ## License
 
 WorldNote is released under a custom license that encourages contributions while restricting standalone deployment. For detailed information, please refer to the [LICENSE](https://github.com/RyuAtelier/WorldNote/blob/main/LICENSE) file in the repository.
