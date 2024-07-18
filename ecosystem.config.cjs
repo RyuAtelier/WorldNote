@@ -1,3 +1,7 @@
+/**
+ * This helps with launching WorldNote via PM2.
+ */
+
 module.exports = {
     apps: [
       {
