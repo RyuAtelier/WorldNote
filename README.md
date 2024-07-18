@@ -21,14 +21,14 @@ WorldNote is currently in beta and constantly evolving. We appreciate and welcom
 
 ### Contribution Guidelines
 
-- Please read the `LICENSE` file in the repository to understand the contribution guidelines and self-deployment restrictions.
+- Please read the [LICENSE](https://github.com/RyuAtelier/WorldNote/blob/main/LICENSE) file in the repository to understand the contribution guidelines and self-deployment restrictions.
 - Ensure your code adheres to the existing coding standards and conventions. Make sure you document everything.
 - Provide clear and concise commit messages.
 - Include detailed descriptions in your pull requests.
 
 ## License
 
-WorldNote is released under a custom license that encourages contributions while restricting standalone deployment. For detailed information, please refer to the `LICENSE` file in the repository.
+WorldNote is released under a custom license that encourages contributions while restricting standalone deployment. For detailed information, please refer to the [LICENSE](https://github.com/RyuAtelier/WorldNote/blob/main/LICENSE) file in the repository.
 
 ## Contact
 

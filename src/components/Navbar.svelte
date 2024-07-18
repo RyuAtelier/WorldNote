@@ -3,12 +3,14 @@
 
 	import { El, Navbar, NavbarItem } from 'yesvelte';
     import { _ } from "svelte-i18n";
+
+    import { version, state } from "../stores/App";
 </script>
 
 <Navbar theme="dark">
 	<El row>
 		<El col tag="h1" mb="0" class="navbar-logo">🌎 WorldNote
-			<El tag="small" class="version-text">Beta 1.0.1</El>
+			<El tag="small" class="version-text">{$state} {$version}</El>
 		</El>
 	</El>
 	<NavbarItem icon="brand-x" title={$_("navbar_twitter")} href="https://x.com/noteontheworld" target="_blank"/>
