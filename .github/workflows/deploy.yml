@@ -30,4 +30,3 @@ jobs:
           git pull origin main
           git status
           npm install
-          pm2 restart worldnote-frontend-prod
