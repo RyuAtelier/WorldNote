@@ -26,6 +26,16 @@ WorldNote is currently in beta and constantly evolving. We appreciate and welcom
 - Provide clear and concise commit messages.
 - Include detailed descriptions in your pull requests.
 
+## How to deploy?
+
+Pull the repository and run the following commands
+```
+npm i
+npm install --only=dev
+```
+If you want to work on the project and have to deploy constantly, you can run `npm run dev` and it will watch changes in the directory.
+If you want to keep the project alive and not die, you can run `deploy.sh`.
+
 ## License
 
 WorldNote is released under a custom license that encourages contributions while restricting standalone deployment. For detailed information, please refer to the [LICENSE](https://github.com/RyuAtelier/WorldNote/blob/main/LICENSE) file in the repository.
