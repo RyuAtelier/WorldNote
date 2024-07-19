@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 
 export let map = writable();
 export let mapContainer = writable();
+export let mapStyle = writable(""); // Default map style
 
 export let isAddingNote = writable(false);
 export let doneAddingNote = writable(false);

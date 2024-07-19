@@ -3,7 +3,7 @@
     import config from '../../config.js';
 
     import { onMount } from 'svelte';
-    import { Button, Icon, Tooltip } from 'yesvelte';
+    import { Button, Icon, Tooltip, Dropdown, DropdownItem, DropdownMenu, CheckboxGroup, Checkbox } from 'yesvelte';
     import { Marker, Popup } from 'mapbox-gl';
     import { _, locales } from "svelte-i18n";
 
@@ -13,9 +13,10 @@
     // Libraries
 	import { success, error } from '../../lib/Toasts';
     import Utils from "../../lib/Utils.js";
+    import { COOKIES, readCookie, setCookie, } from "../../lib/Cookies.js";
 
     // Stores
-    import { map, mapContainer, isAddingNote, lastMouseCoords, doneAddingNote } from '../../stores/Map.js';
+    import { map, mapContainer, mapStyle, isAddingNote, lastMouseCoords, doneAddingNote } from '../../stores/Map.js';
     import { clientLang, errorCodes } from "../../stores/App";
 
     let addNoteIcon = "plus";
@@ -26,6 +27,36 @@
     let newNotePopup = null;
     let newNoteMarker = null;
     let cancellingNewNote = false;
+
+    let mapStyles = [
+        {
+            name: $_("map_style_satellite"),
+            id: "satellite-streets-v12",
+            checked: false
+        },
+        {
+            name: $_("map_style_light"),
+            id: "light-v11",
+            checked: false
+        },
+        {
+            name: $_("map_style_dark"),
+            id: "dark-v11",
+            checked: false
+        },
+        {
+            name: $_("map_style_streets"),
+            id: "streets-v12",
+            checked: true
+        },
+        {
+            name: $_("map_style_outdoors"),
+            id: "outdoors-v12",
+            checked: false
+        }
+    ];
+    let mapStylesValue = [];
+    let mapStyleNames = mapStyles.map(m => m.name);
 
     // Enables adding a note mode.
     function addNote() {
@@ -236,10 +267,54 @@
     // On mount, attaches map's container to alter the cursor on map and handle clicks
     onMount(() => {
         if ($mapContainer) $mapContainer.addEventListener('click', handleMapClick);
+        // Load stored map style from cookie on the map
+        const storedMapStyleId = readCookie(document, COOKIES.MAP_STYLE);
+        if (storedMapStyleId) {
+            mapStyles = mapStyles.map(style => ({
+                ...style,
+                checked: style.id === storedMapStyleId
+            }));
+        };
     });
+
+    // Reactive statement to ensure only one style is checked
+    $: {
+        let checkedCount = mapStyles.filter(style => style.checked).length;
+        if (checkedCount > 1) {
+            mapStyles.forEach((style, index) => {
+                if (index !== 0) style.checked = false;
+            });
+        }
+    }
+
+    function handleCheckboxChange(index) {
+        mapStyles = mapStyles.map((style, i) => ({
+            ...style,
+            checked: i === index
+        }));
+        // Set the selected style
+        const selectedStyle = mapStyles[index].id;
+
+        // Set map style store, map style and cookie
+        $mapStyle = selectedStyle;
+        $map.setStyle(`mapbox://styles/mapbox/${$mapStyle}`);
+        setCookie(document, { name: COOKIES.MAP_STYLE, value: $mapStyle });
+    }
 </script>
 
 <div style="z-index: 9999;">
+    <Dropdown>
+        <Button class="change-style-button">
+            <!-- TODO: when change style button is pressed the icon should change to "x" -->
+            <Icon name="palette"/> {$_("map_style")}
+        </Button>
+    
+        <DropdownMenu class="change-style-menu">
+            {#each mapStyles as style, index}
+                <Checkbox label={style.name} bind:checked={style.checked} on:change={() => handleCheckboxChange(index)} />
+            {/each}
+        </DropdownMenu>
+    </Dropdown>
     <Button class="create-note" color={addNoteColor} on:click={addNote}>
         <Icon name={addNoteIcon} />
     </Button>

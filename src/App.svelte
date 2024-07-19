@@ -2,6 +2,7 @@
     import Router, { link } from "svelte-spa-router";
     import { addMessages, init, getLocaleFromNavigator, locale } from "svelte-i18n";
     import MapboxLanguage from "@mapbox/mapbox-gl-language";
+    import Device from 'svelte-device-info';
 
     const urlParams = new URLSearchParams(window.location.search);
     const queryLang = urlParams.get('lang') || null;
@@ -34,6 +35,11 @@
     addMessages("ko", ko);
     addMessages("pt", pt);
     addMessages("fr", fr);
+
+    // Inform the client if they're on mobile that worldnote might not be stable
+    if (Device.isMobile) {
+        alert(`WorldNote is in a beta state and it's not stable on mobile. For better experience, try WorldNote on Desktop.`);
+    };
 
     // Since client lang gets set after preload info request, we have to set it in $:
     // TODO: maybe better solution for this?
