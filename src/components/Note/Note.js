@@ -19,7 +19,7 @@ export default (formData, locs = { notes_note }, locale) => {
         <div class="note-icons">
             <div class="note-heart">
                 <i class="far fa-heart" noteId="${formData.noteId}"></i>
-                <span class="note-heart-like-count"></span>
+                <span class="note-heart-like-count">${formData.likes}</span>
             </div>
             <div class="note-copy-link" noteId="${formData.noteId}">
                 <i class="fa-regular fa-link"></i>

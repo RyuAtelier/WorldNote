@@ -29,6 +29,7 @@
     mapLtd,
     loadedNotes,
     doneAddingNote,
+    loadedNoteIds,
   } from "../../stores/Map.js";
 
   import {
@@ -117,11 +118,19 @@
   async function loadNotes() {
     if (!$map) return;
     const url = new URL(`${config.API_FQDN}/notes/v1/view`);
-    url.searchParams.set("lng", $mapLng);
-    url.searchParams.set("lat", $mapLtd);
+    const data = {
+      lng: $mapLng,
+      lat: $mapLtd,
+      loaded: $loadedNoteIds
+    };
 
     fetch(url, {
-      method: "GET",
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
     })
       .then((response) => {
         if (response.status === 429) {
@@ -145,6 +154,9 @@
           // Adding new notes to $loadedNotes
           newNotes.forEach(({ id, data }) => {
             $loadedNotes[id] = data;
+
+            $loadedNoteIds.push(id);
+            $loadedNoteIds = $loadedNoteIds;
           });
 
           // Add notes to the map as marker
@@ -208,6 +220,8 @@
     const heartIcon = event.target.closest('.note-heart').querySelector('i');
     const likeCountSpan = event.target.closest('.note-heart').querySelector('.note-heart-like-count');
 
+    const noteData = $loadedNotes[noteId];
+    console.log(noteData)
     const isNoteLiked = $likedNotes.includes(noteId);
 
     if (!isNoteLiked) {

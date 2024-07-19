@@ -1,4 +1,5 @@
 # WorldNote
+[![Crowdin](https://badges.crowdin.net/worldnote/localized.svg)](https://crowdin.com/project/worldnote)
 
 ![WorldNote banner](https://noteonthe.world/assets/meta_banner.jpg)
 
