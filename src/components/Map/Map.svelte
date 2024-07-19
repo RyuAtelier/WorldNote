@@ -205,9 +205,10 @@
   }
 
   function handleLike(event, noteId) {
-    const heartIcon = event.target;
+    const heartIcon = event.target.closest('.note-heart').querySelector('i');
+    const likeCountSpan = event.target.closest('.note-heart').querySelector('.note-heart-like-count');
+
     const isNoteLiked = $likedNotes.includes(noteId);
-    console.log(noteId, isNoteLiked)
 
     if (!isNoteLiked) {
       // Add note to liked notes
@@ -221,6 +222,7 @@
       heartIcon.classList.add("fas");
       heartIcon.style.color = '#e32400';
       heartIcon.style.animation = 'heartBeat 0.5s';
+      likeCountSpan.textContent = "34";
     } else {
       // Remove note from liked notes
       $likedNotes = $likedNotes.filter((id) => id !== noteId);

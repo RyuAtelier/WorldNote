@@ -1,9 +1,7 @@
 import utils from "../../lib/Utils";
 import { _ } from "svelte-i18n";
 
-import { likedNote } from "../../stores/Note";
-
-export default (formData, locs = { notes_note }, locale, likeFunc) => {
+export default (formData, locs = { notes_note }, locale) => {
     return `
     <div class="note-data" noteId="${formData.noteId}">
         <h2 class="note-notenumber">${locs.notes_note}</h2>
@@ -21,6 +19,7 @@ export default (formData, locs = { notes_note }, locale, likeFunc) => {
         <div class="note-icons">
             <div class="note-heart">
                 <i class="far fa-heart" noteId="${formData.noteId}"></i>
+                <span class="note-heart-like-count"></span>
             </div>
             <div class="note-copy-link" noteId="${formData.noteId}">
                 <i class="fa-regular fa-link"></i>

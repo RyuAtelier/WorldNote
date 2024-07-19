@@ -43,3 +43,19 @@ hr.solid {
 .note-icons i {
     margin-right: 10px; 
 }
+
+.note-heart {
+    display: flex;
+    align-items: center;
+}
+
+.note-heart i {
+    font-size: 20px;
+}
+
+.note-heart span {
+    font-size: 14px;
+    margin-left: -4px;
+    margin-right: 15px;
+}
+
