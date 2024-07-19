@@ -13,3 +13,4 @@ export let mapLtd = writable(0);
 export let lastMouseCoords = writable({});
 
 export let loadedNotes = writable([]);
+export let loadedNoteIds = writable([]);
