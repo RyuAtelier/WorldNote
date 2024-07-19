@@ -51,5 +51,11 @@
     "note_against_moderation": "Your note is against Terms of Use. It will not be posted!",
     "cant_create_note": "Error occurred while trying to create the note!",
     "cant_view_notes": "Error occurred while trying to view notes!",
-    "rate_limited": "Too many notes created from this IP, please try again later!"
+    "rate_limited": "Too many notes created from this IP, please try again later!",
+    "map_style": "Map style",
+    "map_style_satellite": "Satellite",
+    "map_style_light": "Light",
+    "map_style_dark": "Dark",
+    "map_style_streets": "Streets",
+    "map_style_outdoors": "Outdoors"
 }

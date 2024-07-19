@@ -15,12 +15,16 @@
   import { success, error } from "../../lib/Toasts";
 
   // Stores
-  import { map, mapContainer, isAddingNote, lastMouseCoords, mapZoom, mapLng, mapLtd, loadedNotes, doneAddingNote, loadedNoteIds } from "../../stores/Map.js";
-    import MapboxLanguage from "@mapbox/mapbox-gl-language";
+  import { map, mapContainer, mapStyle, lastMouseCoords, mapZoom, mapLng, mapLtd, loadedNotes, doneAddingNote, loadedNoteIds } from "../../stores/Map.js";
+    import { COOKIES, readCookie } from "../../lib/Cookies";
 
   const DEFAULT_LNG = 0;
   const DEFAULT_LAT = 0;
   const DEBUG_SHOW_GEOLOCATION = true;
+  const DEFAULT_MAP_STYLE = "outdoors-v11";
+  
+  // Set mapStyle from cookie / if it doesnt exist use default map style
+  if (!$mapStyle) $mapStyle = readCookie(document, COOKIES.MAP_STYLE) || DEFAULT_MAP_STYLE;
 
   let lng = DEFAULT_LNG, lat = DEFAULT_LAT;
 
@@ -42,11 +46,10 @@
     $map = new Map({
       container: $mapContainer,
       accessToken: process.env.MAPBOX_API_TOKEN,
-      style: `mapbox://styles/mapbox/outdoors-v11`,
+      style: `mapbox://styles/mapbox/${$mapStyle}`,
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom,
       projection: "globe",
-      
     });
 
     // Load notes inital
