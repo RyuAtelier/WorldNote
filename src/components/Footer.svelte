@@ -16,7 +16,7 @@
 <div class="footer">
     <!-- Copyright and credits -->
     <div>
-        &copy; <span>{getCurrentYear()}</span>, <i class="fas fa-globe"></i> {$_("footer_rights")}
+        &copy; <span>{getCurrentYear()}</span>, {$_("footer_rights")}
     </div>
 
     <!-- Longitude and latitude -->
